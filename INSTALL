@@ -1,0 +1,4 @@
+Ce projet a été développé sous Eclipse et tester depuis un serveur local HTTP Preview (Serveur fourni par Eclipse).
+Il doit être donc lancé depuis un serveur HTTP. Ensuite, une fois le serveur lancé,
+pour commencer il faut utiliser dans un navigateur web le lien suivant : http://localhost:port/labyrinthe/index.html
+Ce projet a été testé sous Safari, Mozilla Firefox et Chrome.
