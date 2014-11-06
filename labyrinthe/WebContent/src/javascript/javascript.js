@@ -105,12 +105,12 @@ $(function(){
 				/*Collision entre le heros et le labyrinthe*/
 				var otherObject = targetObject.attr("id") == "herosHit" ? $('#mazeHit') : $('#herosHit');
 				var hit = targetObject.objectHitTest({"object":otherObject, "transparency":true});
-				HitTestResult($("#hitTestObjectPosition"), $("#hitTestObjectCollisionState"),$("#hitTestObjectLife"), hit, {"x":objectPosition.left, "y":objectPosition.top});
+				HitTestResult(hit, {"x":objectPosition.left, "y":objectPosition.top});
 
 				/*Collision entre le heros et le burger*/
 				var otherObject2 = targetObject.attr("id") == "herosHit" ? $('#burgerHit') : $('#herosHit');
 				var win= targetObject.objectHitTest({"object":otherObject2, "transparency":true});
-				WinTestResult($("#hitTestObjectPosition"), $("#hitTestObjectCollisionState"),$("#hitTestObjectLife"), win, {"x":objectPosition.left, "y":objectPosition.top});
+				WinTestResult(win, {"x":objectPosition.left, "y":objectPosition.top});
 
 				/*Construction des deux tableaux de positions*/
 				if(positionX.length == 20 && positionY.length == 20)
@@ -125,9 +125,7 @@ $(function(){
 	});
 
 	/*Resultat des tests de collision entre le heros et les bords*/
-	function HitTestResult(jqElementPosition,jqElementYesNo,jqElementLife, hit, pos){
-
-		//jqElementPosition.html('x='+Math.round(pos.x)+', y='+Math.round(pos.y));
+	function HitTestResult(hit, pos){
 
 		var hitText = 'NO';
 		var hitColor = '#FF0000';
@@ -136,30 +134,24 @@ $(function(){
 			$('.heros').trigger('mouseup');
 			if(life>0)
 			{
-				alert("attention");
+				alert("Attention !");
 				hitText = "YES";
 				hitColor = '#00B600';
 				life--;
 				showLife(life);
 
-				//jqElementLife.html(life);
 				$(".heros").animate({ left: positionX[0]-668, top: positionY[0]-69});
 			}
 
 			else
 			{
 				lostGame();
-				//jqElementLife.html(life);
 			}
 		}
-		//jqElementYesNo.html(hitText);
-		//jqElementYesNo.css({'color':hitColor});
 	}
 
 	/*Resultat des tests de collision entre le heros et le burger*/
-	function WinTestResult(jqElementPosition, jqElementYesNo,jqElementLife, win, pos){
-		jqElementPosition.html('x='+Math.round(pos.x)+', y='+Math.round(pos.y));
-
+	function WinTestResult(win, pos){
 		var hitText = 'NO';
 		var hitColor = '#FF0000';
 		if(win)
@@ -174,7 +166,7 @@ $(function(){
 				$('.heros').trigger('mouseup');
 				if(life>0)
 				{
-					alert("Vous avez triché!");
+					alert("Vous avez triché !");
 					life--;
 					showLife(life);
 				}
@@ -182,14 +174,10 @@ $(function(){
 				{
 					lostGame();
 				}
-				//	jqElementLife.html(life);
 				$(".heros").animate({ top: 20, left: 50});
 			}
 		}
 
-
-		//jqElementYesNo.html(hitText);
-		//jqElementYesNo.css({'color':hitColor});
 	}
 
 });
