@@ -7,6 +7,7 @@ Cette application web est un jeu de labyrinthe en JavaScript, HTML, CSS. L'objec
 
 Les fonctionnalités :
 L'utilisateur à 3 vies, qui sont affichées à coté du labyrinthe. Une vie est perdue, si le personnage touche les bords ou s'il y a tricherie (si le personnage est directement ramené au hamburger sans passer par le labyrinthe).
+Lorsque le personnage touche un bord du labyrinthe, une alert est déclenchée puis le personnage est décalé vers une position précedente à la position actuelle.
 Au bout de 3 vies perdues, l'utilisateur peut soit recommencer, soit voir la solution.
 
 Les labyrinthes sont des images (PNG). Au lancement du jeu, une des images est chargée aléatoirement. 
